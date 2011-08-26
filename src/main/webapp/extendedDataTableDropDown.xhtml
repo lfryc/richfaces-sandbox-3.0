@@ -1,0 +1,52 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<head></head>
+
+<body>
+
+	<h:form>
+		<h:outputText value="rich:extendedDataTable" />
+
+		<rich:extendedDataTable id="tableId" value="#{bean.personList}"
+			var="person" rowKeyVar="row" enableContextMenu="false">
+
+			<rich:column>
+				<f:facet name="header">
+					<h:outputText value="Name" />
+				</f:facet>
+				<h:outputText value="#{person.name}" />
+			</rich:column>
+			<rich:column>
+				<f:facet name="header">
+					<h:outputText value="Headter" styleClass="tableHeader" />
+				</f:facet>
+
+				<rich:dropDownMenu showDelay="0">
+					<f:facet name="label">
+						<h:outputText value="Drop" />
+					</f:facet>
+					<rich:menuItem submitMode="ajax" value="Menu Item Value">
+					</rich:menuItem>
+				</rich:dropDownMenu>
+				
+			</rich:column>
+			<rich:column>
+				<a4j:outputPanel id="panelId">
+					<h:outputText value="Tooltip" />
+				</a4j:outputPanel>
+				<rich:toolTip value="This is a tooltip." for="panelId" />
+			</rich:column>
+		</rich:extendedDataTable>
+	</h:form>
+
+</body>
+
+</html>
